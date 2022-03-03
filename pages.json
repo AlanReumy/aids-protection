@@ -14,11 +14,69 @@
         "navigationBarTitleText": "uni-app"
       }
     }
-  ],
+    ,{
+          "path" : "pages/my/my",
+          "style" :
+          {
+              "navigationBarTitleText": "",
+              "enablePullDownRefresh": false
+          }
+
+      }
+      ,{
+          "path" : "pages/block/block",
+          "style" :
+          {
+              "navigationBarTitleText": "",
+              "enablePullDownRefresh": false
+          }
+
+      }
+      ,{
+          "path" : "pages/learn/learn",
+          "style" :
+          {
+              "navigationBarTitleText": "",
+              "enablePullDownRefresh": false
+          }
+
+      }
+    ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
-  }
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor":"#FF3333",
+    "list":[
+            {
+                        "pagePath": "pages/index/index",
+                        "iconPath": "",
+                        "selectedIconPath": "",
+                        "text": "首页"
+            },
+            {
+                        "pagePath": "pages/block/block",
+                        "iconPath": "",
+                        "selectedIconPath": "",
+                        "text": "阻断"
+            },
+            {
+                        "pagePath": "pages/learn/learn",
+                        "iconPath": "",
+                        "selectedIconPath": "",
+                        "text": "科普"
+            },
+            {
+                        "pagePath": "pages/my/my",
+                        "iconPath": "",
+                        "selectedIconPath": "",
+                        "text": "我的"
+            }
+
+        ]
+    }
 }
