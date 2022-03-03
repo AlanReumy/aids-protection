@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "aidsProtection",
   "appid": "",
   "description": "",
   "versionName": "1.0.0",
@@ -68,5 +68,5 @@
   "uniStatistics": {
     "enable": false
   },
-  "vueVersion": "3"
+  "vueVersion": "2"
 }
