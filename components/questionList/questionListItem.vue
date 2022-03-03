@@ -1,7 +1,7 @@
 <template>
-  <view class="listItem" @click="goArticleInfo">
-    <view class="title">
-      <slot name="title">你读过最惊艳的现代诗是什么？</slot>
+  <view class="listItem" @click="goAnswerList">
+    <view class="question">
+      <slot name="question">你读过最惊艳的现代诗是什么？</slot>
     </view>
     <view class="author">
       <slot name="author">作者</slot>
@@ -13,24 +13,26 @@
         一切的发生，都是必…</slot
       >
     </view>
-    <view class="footer">
-      <slot name="agreeCount" class="count">1</slot> 赞同·
-      <slot name="commentCount" class="count">1</slot> 评论
-    </view>
   </view>
 </template>
 
 <script>
 export default {
   components: {},
+  props: {
+    showData: {
+      type: Boolean,
+      default: false
+    }
+  },
   data: () => ({}),
   computed: {},
   props: ['info'],
   methods: {
     // 跳转
-    goArticleInfo() {
+    goAnswerList() {
       uni.navigateTo({
-        url: `/pages/article/article?info=${JSON.stringify(this.info)}`
+        url: `/pages/answer/answer?info=${JSON.stringify(this.info)}`
       })
     }
   },
@@ -61,10 +63,10 @@ export default {
 
 <style lang="scss" scoped>
 .listItem {
-  margin-top: 20rpx;
+  margin-bottom: 20rpx;
   background-color: #fff;
   padding: 0rpx 50rpx;
-  .title {
+  .question {
     padding-top: 20rpx;
     font-size: 35rpx;
     font-weight: bold;
@@ -80,10 +82,6 @@ export default {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-  }
-  .footer {
-    display: flex;
-    font-size: 0.8rem;
     padding-bottom: 20rpx;
   }
 }

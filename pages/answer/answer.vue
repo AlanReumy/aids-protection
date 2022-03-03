@@ -1,27 +1,25 @@
 <template>
-  <view class="faq">
-    <list :listData="listData" />
-  </view>
+  <div class="answer">
+    <AnswerList :info="info"></AnswerList>
+  </div>
 </template>
 
 <script>
-import { list } from '../../components/List/list.vue'
+import AnswerList from '../../components/answerList/answerList.vue'
 export default {
   components: {
-    list
+    AnswerList
   },
-  data: () => ({}),
-  computed: {
-    listData() {
-      return this.$store.state.faqModule.faqList
-    }
-  },
+  data: () => ({
+    info: ''
+  }),
+  computed: {},
   methods: {},
   watch: {},
 
   // 页面周期函数--监听页面加载
-  onLoad() {
-    console.log()
+  onLoad(options) {
+    this.info = JSON.parse(options.info)
   },
   // 页面周期函数--监听页面初次渲染完成
   onReady() {},
@@ -44,8 +42,4 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-.faq {
-  background-color: #eee;
-}
-</style>
+<style></style>

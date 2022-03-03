@@ -1,6 +1,5 @@
 <template>
   <view class="articleInfo">
-    <view>{{ info.title }}</view>
     <view class="header">
       <view class="avatar">
         <u-icon name="github-circle-fill" size="30px"></u-icon>

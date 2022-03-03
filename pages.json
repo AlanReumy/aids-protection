@@ -8,9 +8,16 @@
   },
   "pages": [
     {
-      "path": "pages/faq/faq",
+      "path": "pages/question/question",
       "style": {
         "navigationBarTitleText": "问答专区"
+      }
+    },
+    {
+      "path": "pages/learn/learn",
+      "style": {
+        "navigationBarTitleText": "科普专区",
+        "enablePullDownRefresh": false
       }
     },
     //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
@@ -20,41 +27,43 @@
         "navigationBarTitleText": "uni-app"
       }
     },
+
     {
       "path": "pages/article/article",
       "style": {
         "navigationBarTitleText": "",
         "enablePullDownRefresh": false
       }
+    },
+    {
+      "path": "pages/my/my",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/block/block",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/answer/answer",
+      "style": {
+        "navigationBarTitleText": "回答列表",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/ask/ask",
+      "style": {
+        "navigationBarTitleText": "提问题",
+        "enablePullDownRefresh": false
+      }
     }
-    ,{
-          "path" : "pages/my/my",
-          "style" :
-          {
-              "navigationBarTitleText": "",
-              "enablePullDownRefresh": false
-          }
-
-      }
-      ,{
-          "path" : "pages/block/block",
-          "style" :
-          {
-              "navigationBarTitleText": "",
-              "enablePullDownRefresh": false
-          }
-
-      }
-      ,{
-          "path" : "pages/learn/learn",
-          "style" :
-          {
-              "navigationBarTitleText": "",
-              "enablePullDownRefresh": false
-          }
-
-      }
-    ],
+  ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
@@ -63,33 +72,32 @@
   },
   "tabBar": {
     "color": "#000000",
-    "selectedColor":"#FF3333",
-    "list":[
-            {
-                        "pagePath": "pages/index/index",
-                        "iconPath": "",
-                        "selectedIconPath": "",
-                        "text": "首页"
-            },
-            {
-                        "pagePath": "pages/block/block",
-                        "iconPath": "",
-                        "selectedIconPath": "",
-                        "text": "阻断"
-            },
-            {
-                        "pagePath": "pages/learn/learn",
-                        "iconPath": "",
-                        "selectedIconPath": "",
-                        "text": "科普"
-            },
-            {
-                        "pagePath": "pages/my/my",
-                        "iconPath": "",
-                        "selectedIconPath": "",
-                        "text": "我的"
-            }
-
-        ]
-    }
+    "selectedColor": "#FF3333",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "",
+        "selectedIconPath": "",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/block/block",
+        "iconPath": "",
+        "selectedIconPath": "",
+        "text": "阻断"
+      },
+      {
+        "pagePath": "pages/learn/learn",
+        "iconPath": "",
+        "selectedIconPath": "",
+        "text": "科普"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "",
+        "selectedIconPath": "",
+        "text": "我的"
+      }
+    ]
+  }
 }
