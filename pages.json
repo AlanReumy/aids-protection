@@ -15,19 +15,18 @@
       }
     },
     {
-      "path": "pages/question/question",
-      "style": {
-        "navigationBarTitleText": "问答专区"
-      }
-    },
-    {
       "path": "pages/learn/learn",
       "style": {
         "navigationBarTitleText": "科普专区",
         "enablePullDownRefresh": false
       }
     },
-
+    {
+      "path": "pages/question/question",
+      "style": {
+        "navigationBarTitleText": "问答专区"
+      }
+    },
     {
       "path": "pages/article/article",
       "style": {
@@ -57,9 +56,9 @@
       }
     },
     {
-      "path": "pages/ask/ask",
+      "path": "pages/edit/edit",
       "style": {
-        "navigationBarTitleText": "提问题",
+        "navigationBarTitleText": "编辑",
         "enablePullDownRefresh": false
       }
     }

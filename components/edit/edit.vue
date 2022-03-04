@@ -8,7 +8,11 @@
       showConfirmBar
     ></u--textarea>
     <view class="action">
-      <u-button type="primary" text="输入问题" @click="finishEdit"></u-button>
+      <u-button
+        type="primary"
+        :text="config.text"
+        @click="finishEdit"
+      ></u-button>
     </view>
   </view>
 </template>

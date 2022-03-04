@@ -28,8 +28,13 @@ export default {
   },
   methods: {
     askQuestion() {
+      const config = {
+        placeholder: '输入问题',
+        text: '发布问题',
+        url: '/pages/question/question'
+      }
       uni.navigateTo({
-        url: '/pages/ask/ask'
+        url: `/pages/edit/edit?config=${JSON.stringify(config)}`
       })
     }
   },

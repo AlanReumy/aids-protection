@@ -13,12 +13,12 @@
       <u-tabbar-item
         text="写回答"
         icon="edit-pen"
-        @click="click1"
+        @click="editAnswer"
       ></u-tabbar-item>
       <u-tabbar-item
         text="关注问题"
-        icon="heart"
-        @click="click1"
+        :icon="heartIcon"
+        @click="starQuestion"
       ></u-tabbar-item>
     </u-tabbar>
   </view>
@@ -28,7 +28,32 @@
 import AnswerListItem from './answerListItem.vue'
 export default {
   props: ['info'],
-  components: { AnswerListItem }
+  components: { AnswerListItem },
+  data() {
+    return {
+      isStar: false
+    }
+  },
+  computed: {
+    heartIcon() {
+      return this.isStar ? 'heart-fill' : 'heart'
+    }
+  },
+  methods: {
+    editAnswer() {
+      const config = {
+        placeholder: '写回答',
+        text: '发布回答',
+        url: '/pages/question/question'
+      }
+      uni.navigateTo({
+        url: `/pages/edit/edit?config=${JSON.stringify(config)}`
+      })
+    },
+    starQuestion() {
+      this.isStar = !this.isStar
+    }
+  }
 }
 </script>
 
