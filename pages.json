@@ -57,9 +57,9 @@
       }
     },
     {
-      "path": "pages/ask/ask",
+      "path": "pages/edit/edit",
       "style": {
-        "navigationBarTitleText": "提问题",
+        "navigationBarTitleText": "编辑",
         "enablePullDownRefresh": false
       }
     }

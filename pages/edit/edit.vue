@@ -6,25 +6,26 @@
 
 <script>
 import Edit from '../../components/edit/edit.vue'
-import config from './config/config'
 export default {
   components: { Edit },
   data: () => ({
     question: '',
-    config: config
+    config: ''
   }),
   computed: {},
   methods: {
     finishEdit() {
       uni.redirectTo({
-        url: '/pages/question/question'
+        url: this.config.url
       })
     }
   },
   watch: {},
 
   // 页面周期函数--监听页面加载
-  onLoad() {},
+  onLoad(options) {
+    this.config = JSON.parse(options.config)
+  },
   // 页面周期函数--监听页面初次渲染完成
   onReady() {},
   // 页面周期函数--监听页面显示(not-nvue)
