@@ -1,5 +1,5 @@
 <template>
-  <view style="">
+  <view>
     <u-search placeholder="请输入搜索内容"
       :clearabled="true"
       :show-action="true"
@@ -40,7 +40,7 @@
       </view>
     </view>
     <swiper :next-margin="20">
-      <swiper-item v-for="(item,index) in article" :key="index">
+      <swiper-item v-for="(item,index) in article" :key="item.index">
         <view class="swiper-item" >
           <text style="font-size: 30rpx; font-weight: 600;">{{item.title}}</text>
           <view class="user">
