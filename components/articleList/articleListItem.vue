@@ -17,10 +17,11 @@ export default {
 
 <style scoped lang="scss">
 .articleListItem {
-  margin-top: 50rpx;
-  margin-bottom: 100rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
   padding: 0 50rpx;
   .title {
+    margin-top: 20rpx;
     font-weight: bold;
     padding-bottom: 20rpx;
   }

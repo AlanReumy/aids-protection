@@ -5,7 +5,6 @@
       :current="current"
       @change="sectionChange"
     ></u-subsection>
-    <!-- todo: 不显示的问题 -->
     <view class="experience" v-if="current === 0">
       <ArticleList :articleList="knowledgeList"></ArticleList>
     </view>
@@ -48,4 +47,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.knowledge,
+.experience {
+  background-color: #fff;
+}
+</style>
