@@ -19,8 +19,10 @@ export default {
 .articleListItem {
   margin-top: 50rpx;
   margin-bottom: 100rpx;
+  padding: 0 50rpx;
   .title {
     font-weight: bold;
+    padding-bottom: 20rpx;
   }
 }
 </style>

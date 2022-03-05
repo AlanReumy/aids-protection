@@ -5,11 +5,11 @@
       :current="current"
       @change="sectionChange"
     ></u-subsection>
-    <view class="knowledge" v-show="current == 0">
+    <!-- todo: 不显示的问题 -->
+    <view class="experience" v-if="current === 0">
       <ArticleList :articleList="knowledgeList"></ArticleList>
     </view>
-    <!-- todo: 不显示的问题 -->
-    <view class="experience" v-show="current == 1">
+    <view class="knowledge" v-else-if="current === 1">
       <ArticleList :articleList="experienceList"></ArticleList>
     </view>
   </view>
@@ -28,14 +28,14 @@ export default {
           name: '经验分享'
         }
       ],
-      current: 0
+      current: 1
     }
   },
   computed: {
     knowledgeList() {
       return this.$store.state.learnModule.knowledgeList
     },
-    experience() {
+    experienceList() {
       return this.$store.state.learnModule.experienceList
     }
   },

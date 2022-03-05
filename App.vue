@@ -14,5 +14,7 @@ export default {
 
 <style lang="scss">
 @import 'uview-ui/index.scss';
-
+page {
+  background-color: #eee;
+}
 </style>

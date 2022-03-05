@@ -1,12 +1,21 @@
 {
   "easycom": {
-    // npm安装的方式不需要前面的"@/"，下载安装的方式需要"@/"
-    // npm安装方式
     "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
-    // 下载安装方式
-    // "^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
   },
   "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "首页"
+      }
+    },
+    {
+      "path": "pages/volunteer/volunteer",
+      "style": {
+        "navigationBarTitleText": "志愿服务",
+        "enablePullDownRefresh": false
+      }
+    },
     {
       "path": "pages/learn/learn",
       "style": {
@@ -21,18 +30,10 @@
       }
     },
 
-    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-    {
-      "path": "pages/index/index",
-      "style": {
-        "navigationBarTitleText": "uni-app"
-      }
-    },
-
     {
       "path": "pages/article/article",
       "style": {
-        "navigationBarTitleText": "",
+        "navigationBarTitleText": "经验分享",
         "enablePullDownRefresh": false
       }
     },
@@ -46,7 +47,7 @@
     {
       "path": "pages/block/block",
       "style": {
-        "navigationBarTitleText": "",
+        "navigationBarTitleText": "阻断",
         "enablePullDownRefresh": false
       }
     },
@@ -61,6 +62,13 @@
       "path": "pages/edit/edit",
       "style": {
         "navigationBarTitleText": "编辑",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/volunteerForm/volunteerForm",
+      "style": {
+        "navigationBarTitleText": "预约详情",
         "enablePullDownRefresh": false
       }
     }
