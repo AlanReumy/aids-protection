@@ -29,7 +29,6 @@
         "navigationBarTitleText": "问答专区"
       }
     },
-
     {
       "path": "pages/article/article",
       "style": {
