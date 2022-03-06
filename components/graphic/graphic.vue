@@ -17,7 +17,7 @@ export default {
   methods: {
     goVolunteerForm() {
       uni.navigateTo({
-        url: `/pages/volunteerForm/volunteerForm?item=${JSON.stringify(
+        url: `/pages/volunteerInfo/volunteerInfo?item=${JSON.stringify(
           this.item
         )}`
       })
@@ -54,13 +54,17 @@ export default {
     }
     .title,
     .desc {
-      padding-left: 20px;
+      padding-left: 40rpx;
+    }
+    .title {
+      margin-bottom: 10rpx;
     }
 
     .desc {
-      font-size: 35rpx;
+      font-size: 32rpx;
       overflow: hidden;
       display: -webkit-box;
+      padding-right: 20rpx;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
     }

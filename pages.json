@@ -65,7 +65,7 @@
       }
     },
     {
-      "path": "pages/volunteerForm/volunteerForm",
+      "path": "pages/volunteerInfo/volunteerInfo",
       "style": {
         "navigationBarTitleText": "预约详情",
         "enablePullDownRefresh": false
