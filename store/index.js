@@ -8,10 +8,15 @@ Vue.use(Vuex) // 让vue使用vuex
 const store = new Vuex.Store({
   state() {
     return {
-      count: 0
+      count: 0,
+      userInfo:{}
     }
   },
-  mutations: {},
+  mutations: {
+    setUserInfo(state, userInfo) { //设置参数
+          state.userInfo = userInfo;
+        }
+  },
   modules: {
     faqModule,
     learnModule,
