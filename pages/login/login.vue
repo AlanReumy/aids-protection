@@ -65,8 +65,14 @@ export default {
           'post'
         ).then((res) => {
           // 打印调用成功回调
-          console.log(res)
-          this.$store.commit('setUserInfo', res)
+          uni.setStorage({
+            key: 'userInfo',
+            data: res.data,
+            success: function () {
+              console.log('success')
+            }
+          })
+          this.$store.commit('setUserInfo', res.data)
           uni.navigateBack({})
         })
       }

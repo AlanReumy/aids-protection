@@ -1,15 +1,23 @@
 <template>
-  <view class="listItem" @click="goArticleInfo">
-    <view class="author">
-      <slot name="author">{{ info.author }}</slot>
+  <view class="listItem" @click="goAnswerList">
+    <view class="title">
+      <slot name="title">{{ info.title }}</slot>
     </view>
     <view class="desc">
       <slot name="desc">{{ info.content }}</slot>
     </view>
+    <view class="author">
+      <slot name="author">{{ info.user.username }}</slot>
+    </view>
     <view class="footer">
-      <slot name="agreeCount" class="count">{{ info.agreeCount }}</slot> 赞同·
-      <slot name="commentCount" class="count">{{ info.commentCount }}</slot>
-      评论
+      <slot name="agreeCount" class="count">{{
+        info.agree ? info.agree : 0
+      }}</slot>
+      赞同·
+      <slot name="disAgreeCount" class="count">{{
+        info.disAgree ? info.disAgree : 0
+      }}</slot>
+      反对
     </view>
   </view>
 </template>
@@ -25,13 +33,15 @@ export default {
   },
   data: () => ({}),
   computed: {},
+  mounted() {},
   props: ['info'],
   methods: {
     // 跳转
-    goArticleInfo() {
-      uni.navigateTo({
+    goAnswerList() {
+      uni.redirectTo({
         url: `/pages/article/article?info=${JSON.stringify(this.info)}`
       })
+      console.log(999)
     }
   },
   watch: {},
@@ -65,7 +75,6 @@ export default {
   background-color: #fff;
   padding: 0rpx 50rpx;
   .author {
-    padding-top: 30rpx;
     font-size: 30rpx;
   }
   .desc {

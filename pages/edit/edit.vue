@@ -1,57 +1,101 @@
 <template>
-  <view class="ask">
-    <Edit :config="config" @finish-edit="finishEdit"></Edit>
+  <view class="edit">
+    <u--textarea
+      v-model="title"
+      :placeholder="config.titlePlaceHolder"
+      border="bottom"
+      height="50"
+      showConfirmBar
+    ></u--textarea>
+    <view v-if="config.type === 'question'">
+      <u--textarea
+        v-model="desc"
+        :placeholder="config.descPlaceHolder"
+        border="bottom"
+        height="200"
+        showConfirmBar
+      ></u--textarea>
+    </view>
+    <view v-else>
+      <u--textarea
+        v-model="content"
+        :placeholder="config.descPlaceHolder"
+        border="bottom"
+        height="200"
+        showConfirmBar
+      ></u--textarea>
+    </view>
+    <view class="action">
+      <u-button
+        type="primary"
+        :text="config.buttonText"
+        @click="finishEdit"
+      ></u-button>
+    </view>
   </view>
 </template>
 
 <script>
-import Edit from '../../components/edit/edit.vue'
 export default {
-  components: { Edit },
-  data: () => ({
-    question: '',
-    config: ''
-  }),
-  computed: {},
-  methods: {
-    finishEdit() {
-      uni.redirectTo({
-        url: this.config.url
-      })
+  data() {
+    return {
+      userId: '',
+      config: '',
+      title: '',
+      desc: '',
+      content: '',
+      questionId: ''
     }
   },
-  watch: {},
-
-  // 页面周期函数--监听页面加载
-  onLoad(options) {
-    this.config = JSON.parse(options.config)
+  onLoad(option) {
+    uni.getStorage({
+      key: 'userInfo',
+      success: (res) => {
+        this.userId = res.data.id
+      }
+    })
+    this.config = JSON.parse(option.config)
+    this.questionId = JSON.parse(option.questionId)
   },
-  // 页面周期函数--监听页面初次渲染完成
-  onReady() {},
-  // 页面周期函数--监听页面显示(not-nvue)
-  onShow() {},
-  // 页面周期函数--监听页面隐藏
-  onHide() {},
-  // 页面周期函数--监听页面卸载
-  onUnload() {},
-  // 页面处理函数--监听用户下拉动作
-  onPullDownRefresh() {
-    uni.stopPullDownRefresh()
-  },
-  // 页面处理函数--监听用户上拉触底
-  onReachBottom() {}
-  // 页面处理函数--监听页面滚动(not-nvue)
-  /* onPageScroll(event) {}, */
-  // 页面处理函数--用户点击右上角分享
-  /* onShareAppMessage(options) {}, */
+  methods: {
+    finishEdit() {
+      if (this.config.type === 'question') {
+        this.$request(
+          '/question/create',
+          {
+            title: this.title,
+            desc: this.desc,
+            userId: this.userId
+          },
+          'post'
+        ).then((res) => {
+          uni.navigateTo({
+            url: '/pages/question/question'
+          })
+        })
+      } else if (this.config.type === 'answer') {
+        this.$request(
+          '/answer/create',
+          {
+            title: this.title,
+            content: this.content,
+            userId: this.userId,
+            questionId: this.questionId
+          },
+          'post'
+        ).then((res) => {
+          uni.navigateTo({
+            url: `/pages/answer/answer?questionId=${this.questionId}`
+          })
+        })
+      }
+    }
+  }
 }
 </script>
 
-<style scoped lang="scss">
-.ask {
-  margin: 40rpx;
-  .action {
-    margin-top: 50rpx;
-  }
+<style scoped>
+.action {
+  margin-top: 20px;
 }
 </style>

@@ -1,49 +1,69 @@
 <template>
-  <view class="question">
-    <QuestionList :listData="listData" />
+  <view class="list">
+    <view v-for="item in questionList" :key="item.id">
+      <QuestionListItem :info="item">
+        <template #question>{{ item.question }}</template>
+        <template #author>提问者：{{ item.user.username }}</template>
+        <template #desc>问题描述：{{ item.desc }}</template>
+        <template #agreeCount>{{ item.agreeCount }}</template>
+        <template #commentCount>{{ item.commentCount }}</template>
+      </QuestionListItem>
+    </view>
+    <view class="icon" @click="askQuestion"
+      ><u-icon name="plus-circle" size="20px"></u-icon
+    ></view>
   </view>
 </template>
 
 <script>
-import QuestionList from '../../components/questionList/questionList.vue'
+import QuestionListItem from '../../components/questionList/questionListItem'
 export default {
+  props: ['listData'],
+  name: 'list',
   components: {
-    QuestionList
+    QuestionListItem
   },
-  data: () => ({}),
-  computed: {
-    listData() {
-      return this.$store.state.faqModule.faqList
+  data() {
+    return {
+      questionList: []
     }
   },
-  methods: {},
-  watch: {},
-
-  // 页面周期函数--监听页面加载
-  onLoad() {},
-  // 页面周期函数--监听页面初次渲染完成
-  onReady() {},
-  // 页面周期函数--监听页面显示(not-nvue)
-  onShow() {},
-  // 页面周期函数--监听页面隐藏
-  onHide() {},
-  // 页面周期函数--监听页面卸载
-  onUnload() {},
-  // 页面处理函数--监听用户下拉动作
-  onPullDownRefresh() {
-    uni.stopPullDownRefresh()
+  mounted() {
+    uni.getStorage({
+      key: 'userInfo',
+      success: (res) => {
+        this.$request('/question/list?userId=' + res.data.id).then((res) => {
+          this.$store.commit('faqModule/changeQuestionList', res.data)
+          this.questionList = res.data
+        })
+      }
+    })
   },
-  // 页面处理函数--监听用户上拉触底
-  onReachBottom() {}
-  // 页面处理函数--监听页面滚动(not-nvue)
-  /* onPageScroll(event) {}, */
-  // 页面处理函数--用户点击右上角分享
-  /* onShareAppMessage(options) {}, */
+  methods: {
+    askQuestion() {
+      const config = {
+        type: 'question',
+        titlePlaceHolder: '输入问题标题',
+        descPlaceHolder: '输入问题内容',
+        buttonText: '发布问题',
+        url: '/pages/question/question'
+      }
+      uni.navigateTo({
+        url: `/pages/edit/edit?config=${JSON.stringify(config)}`
+      })
+    }
+  },
+  computed: {}
 }
 </script>
 
-<style scoped lang="scss">
-.question {
-  background-color: #eee;
+<style lang="scss" scoped>
+.list {
+  position: relative;
+  .icon {
+    top: 75%;
+    right: 50rpx;
+    position: fixed;
+  }
 }
 </style>

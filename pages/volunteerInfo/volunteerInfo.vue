@@ -3,60 +3,11 @@
     <view class="title">
       {{ item.title }}
     </view>
-    <u-subsection
-      :list="list"
-      :current="current"
-      @change="sectionChange"
-    ></u-subsection>
     <view class="volunteerDesc" v-if="current == 0">
       {{ item.desc }}
     </view>
-    <view class="volunteerForm" v-else-if="current == 1">
-      <view class="base header">
-        <view class="time">
-          <u-icon name="calendar"></u-icon>
-          <view class="date">{{ item.info.date }} {{ item.info.time }}</view>
-        </view>
-      </view>
-      <view class="base form">
-        <view class="instructions"> 请你填写资料，带*号未必填项目 </view>
-        <view class="input">
-          <u--form
-            labelPosition="left"
-            :model="formData"
-            :rules="rules"
-            ref="uForm"
-          >
-            <u-form-item
-              label="姓名"
-              prop="formData.name"
-              borderBottom
-              ref="name"
-            >
-              <u--input
-                placeholder="请填写姓名"
-                v-model="formData.name"
-                border="none"
-              ></u--input>
-            </u-form-item>
-            <u-form-item
-              label="手机"
-              prop="formData.phone"
-              borderBottom
-              ref="phone"
-            >
-              <u--input
-                placeholder="请填写手机号码"
-                v-model="formData.phone"
-                border="none"
-              ></u--input>
-            </u-form-item>
-          </u--form>
-        </view>
-      </view>
-      <view class="btn">
-        <u-button type="primary" shape="circle" @click="submit">提交</u-button>
-      </view>
+    <view class="btn">
+      <u-button type="primary" shape="circle" @click="submit">提交</u-button>
     </view>
   </view>
 </template>
