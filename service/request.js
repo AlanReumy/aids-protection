@@ -1,11 +1,11 @@
-const baseUrl = 'https://www.fastmock.site/mock/ec7bda1b0baae4a5db4d597ed890e4a5/yeb'
-const request = (url = '', date = {}, type = 'GET', header = {}) => {
+const baseUrl = 'http://139.196.47.8:3000/api'
+const request = (url = '', data = {}, type = 'GET', header = {}) => {
   return new Promise((resolve, reject) => {
     uni
       .request({
         method: type,
         url: baseUrl + url,
-        data: date,
+        data: data,
         header: header,
         dataType: 'json'
       })
