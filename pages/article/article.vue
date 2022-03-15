@@ -15,11 +15,19 @@
     </view>
     <view class="action">
       <view class="agree">
-        <u-icon name="thumb-up" size="25px"></u-icon>
-        <view class="count">{{ info.agreeCount ? info.agree : 0 }}</view>
+        <u-icon
+          name="thumb-up"
+          size="25px"
+          @click="changeCount('agree')"
+        ></u-icon>
+        <view class="count">{{ info.agree ? info.agree : 0 }}</view>
       </view>
       <view class="disAgree">
-        <u-icon name="thumb-down" size="25px"></u-icon>
+        <u-icon
+          name="thumb-down"
+          size="25px"
+          @click="changeCount('disAgree')"
+        ></u-icon>
         <view class="count">{{ info.disAgree ? info.disAgree : 0 }}</view>
       </view>
     </view>
@@ -47,15 +55,27 @@ export default {
   },
   onLoad(option) {
     this.info = JSON.parse(option.info)
-    console.log(this.info)
     this.$request('/comment/list?answerId=' + this.info.id).then((res) => {
       this.$store.commit('faqModule/changeCommentList', res.data)
       this.commentList = this.$store.state.faqModule.commentList
-      console.log(this.commentList)
     })
   },
   components: { CommentList },
   methods: {
+    // 修改点赞和反对
+    changeCount(type) {
+      this.info[type] += 1
+      this.$request(
+        '/answer/update',
+        {
+          id: this.info.id,
+          [type]: this.info[type]
+        },
+        'POST'
+      ).then((res) => {
+        console.log(res.data)
+      })
+    },
     // 增加评论
     addComment() {
       uni.getStorage({

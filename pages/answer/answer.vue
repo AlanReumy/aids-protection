@@ -5,7 +5,6 @@
     </view>
     <u-tabbar
       :value="value1"
-      @change="change1"
       :fixed="true"
       :placeholder="false"
       :safeAreaInsetBottom="false"
