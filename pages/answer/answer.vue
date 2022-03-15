@@ -1,45 +1,77 @@
 <template>
-  <div class="answer">
-    <AnswerList :info="info"></AnswerList>
-  </div>
+  <view class="answerList">
+    <view v-for="answer in answerList" :key="answer.id">
+      <AnswerListItem :info="answer"></AnswerListItem>
+    </view>
+    <u-tabbar
+      :value="value1"
+      @change="change1"
+      :fixed="true"
+      :placeholder="false"
+      :safeAreaInsetBottom="false"
+    >
+      <u-tabbar-item
+        text="写回答"
+        icon="edit-pen"
+        @click="editAnswer"
+      ></u-tabbar-item>
+      <u-tabbar-item
+        text="关注问题"
+        :icon="heartIcon"
+        @click="starQuestion"
+      ></u-tabbar-item>
+    </u-tabbar>
+  </view>
 </template>
 
 <script>
-import AnswerList from '../../components/answerList/answerList.vue'
+import AnswerListItem from '../../components/answerList/answerListItem'
 export default {
-  components: {
-    AnswerList
+  components: { AnswerListItem },
+  data() {
+    return {
+      isStar: false,
+      questionId: '',
+      answerList: ''
+    }
   },
-  data: () => ({
-    info: ''
-  }),
-  computed: {},
-  methods: {},
-  watch: {},
-
-  // 页面周期函数--监听页面加载
+  computed: {
+    heartIcon() {
+      return this.isStar ? 'heart-fill' : 'heart'
+    }
+  },
   onLoad(options) {
-    this.info = JSON.parse(options.info)
+    this.questionId = options.questionId
+    this.$request('/answer/list?questionId=' + this.questionId).then((res) => {
+      this.answerList = res.data
+      this.$store.commit('faqModule/changeAnswerList', res.data)
+    })
   },
-  // 页面周期函数--监听页面初次渲染完成
-  onReady() {},
-  // 页面周期函数--监听页面显示(not-nvue)
-  onShow() {},
-  // 页面周期函数--监听页面隐藏
-  onHide() {},
-  // 页面周期函数--监听页面卸载
-  onUnload() {},
-  // 页面处理函数--监听用户下拉动作
-  onPullDownRefresh() {
-    uni.stopPullDownRefresh()
-  },
-  // 页面处理函数--监听用户上拉触底
-  onReachBottom() {}
-  // 页面处理函数--监听页面滚动(not-nvue)
-  /* onPageScroll(event) {}, */
-  // 页面处理函数--用户点击右上角分享
-  /* onShareAppMessage(options) {}, */
+  methods: {
+    editAnswer() {
+      const config = {
+        type: 'answer',
+        titlePlaceHolder: '输入回答标题',
+        descPlaceHolder: '写回答',
+        buttonText: '发布回答',
+        url: '/pages/question/question'
+      }
+      uni.navigateTo({
+        url: `/pages/edit/edit?config=${JSON.stringify(config)}&questionId=${
+          this.questionId
+        }`
+      })
+    },
+    starQuestion() {
+      this.isStar = !this.isStar
+    }
+  }
 }
 </script>
 
-<style></style>
+<style scoped lang="scss">
+.answerList {
+  margin-bottom: 118rpx;
+  background-color: #eee;
+}
+</style>

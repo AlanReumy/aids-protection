@@ -11,9 +11,9 @@
           </view>
         </view>
         <view class="commentInfo">
-          <view class="author">{{ comment.author }}</view>
+          <view class="author">{{ comment.user.username }}</view>
           <view class="content">
-            {{ comment.comment }}
+            {{ comment.content }}
           </view>
         </view>
       </view>
@@ -23,7 +23,10 @@
 
 <script>
 export default {
-  props: ['commentList']
+  props: ['commentList'],
+  mounted() {
+    console.log(this.commentList)
+  }
 }
 </script>
 
