@@ -1,9 +1,5 @@
 const baseUrl = 'http://139.196.47.8:3000/api'
-<<<<<<< HEAD
-const request = (url = '', date = {}, type = 'GET', header = {}) => {
-=======
-const request = (url = '', data = {}, type = 'GET', header = {}) => {
->>>>>>> 9d9134f77d841f4b1c241c2587c2257e7060243d
+const request = (url = '', data= {}, type = 'GET', header = {}) => {
   return new Promise((resolve, reject) => {
     uni
       .request({

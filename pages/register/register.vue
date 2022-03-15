@@ -52,9 +52,9 @@
 		data() {
 			return {
         userInfo:{
-          phone:'15826313570',
-          username:'11111111',
-          password:'11111111'
+          phone:'',
+          username:'',
+          password:''
         }
 			}
 		},
@@ -87,8 +87,10 @@
           this.$request('/user/register',this.userInfo,'POST')
           .then(res=>{
             console.log(res)
+            if(res.code == 200){
+                uni.navigateBack({})  
+            }
           })
-          uni.navigateBack({})
         }
       },
 		}
