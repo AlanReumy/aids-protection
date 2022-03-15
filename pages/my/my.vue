@@ -3,14 +3,14 @@
     <view class="card">
       <view class="userInfo" @click="login">
         <view style="overflow: hidden; border-radius: 99rpx;">
-          <image src="../../static/img/head1.png" style="width: 90rpx; height: 90rpx;"></image>
+          <image :src="userInfo.head" style="width: 90rpx; height: 90rpx;"></image>
         </view>
-        <text style="margin-left: 30rpx;">点击头像登录</text>
+        <text style="margin-left: 30rpx;">{{userInfo.name}}</text>
         <image src="../../static/icon/game.png" style="width: 30rpx; height: 30rpx;margin-left: auto;"></image>
       </view>
     </view>
     <view style="padding: 30rpx 20rpx;">
-        <view class="rowList" @click="test">
+        <view class="rowList">
           <view class="rowListItem" v-for="(item,index) in rowList" :key="index">
               <image :src="item.icon" style="width:40rpx; height:40rpx;"></image>
               <text>{{item.title}}</text>
@@ -33,6 +33,10 @@
 	export default {
 		data() {
 			return {
+        userInfo:{
+          head:'../../static/img/head1.png',
+          name:'点击头像登录'
+        },
         rowList:[
           {
             icon:'../../static/img/head1.png',
@@ -79,15 +83,29 @@
         ]
 			}
 		},
+    onLoad() {
+      this.getUserInfo()
+    },
+    mounted() {
+    },
 		methods: {
       login(){
-        uni.navigateTo({
-          url:'/pages/login/login'
-        })
+        if(!this.$store.state.userInfo.username){
+          uni.navigateTo({
+            url:'/pages/login/login'
+          })
+        }else{
+          uni.navigateTo({
+            url:'/pages/PersonalData/PersonalData'
+          })
+        }
       },
-      test(){
-        console.log(this.$store.state.userInfo)
-      }
+      getUserInfo(){
+        const username = this.$store.state.userInfo.username
+        if(username){
+          this.userInfo.name = username
+        }
+      },
 		}
 	}
 </script>

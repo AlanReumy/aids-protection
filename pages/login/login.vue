@@ -2,16 +2,21 @@
 	<view style="padding: 0 20rpx;">
     <u-toast ref="uToast"></u-toast>
 		<view class="login-container">
-      <view style="width: 60%;">
-        <u--input
-            v-model="username"
-            placeholder="请输入用户名"
-            border="surround"
-            shape="circle"
-            clearable
-          ></u--input>
+      <view style="width: 80%; display: flex;align-items: center;">
+        <text style="width: 20%; margin-right: 10rpx; text-align: end;">用户名</text>
+        <view style="width: 80%;">
+            <u--input
+                v-model="username"
+                placeholder="请输入用户名"
+                border="surround"
+                shape="circle"
+                clearable
+              ></u--input>
+        </view>
       </view>
-      <view style="width: 60%; margin-top: 30rpx;">
+      <view style="width:80%; margin-top: 30rpx;display: flex; align-items: center;">
+        <text style="width: 20%; margin-right: 10rpx;text-align: end;">密码</text>
+        <view style="width: 80%;">
           <u--input
               v-model="password"
               placeholder="请输入密码"
@@ -20,6 +25,7 @@
               type="password"
               clearable
             ></u--input>
+        </view>
       </view>
       <view style="margin-top: 60rpx;width: 60%;">
           <u-button @click="commit" type="error" text="登录"></u-button>
@@ -35,8 +41,8 @@
 	export default {
 		data() {
 			return {
-        username:'',
-        password:''
+        username:'11111111',
+        password:'11111111'
 			}
 		},
 		methods: {
@@ -56,12 +62,28 @@
           })
           return
         }else{
-          this.$request('/admin/info', {
-              }).then(res => {
-                // 打印调用成功回调
-                console.log(res)
-                this.$store.commit("setUserInfo",res);
-                uni.navigateBack({})
+          this.$request('/user/login',{
+            username:this.username,
+            password:this.password
+          },'POST').then(res => {
+            console.log(res)
+            if(res.code == 200){
+                this.$store.commit("setUserInfo",res.data);
+                uni.switchTab({
+                	url: '/pages/my/my',
+                  success(){
+                  		 let page = getCurrentPages().pop();  //跳转页面成功之后
+                               page.onLoad(); //如果页面存在，则重新刷新页面
+                  	  }
+                });
+            }else{
+              this.$refs.uToast.show({
+              	type: 'error',
+              	icon: false,
+              	message: res.msg,
+              })
+              return
+            }
               })
         }
       },

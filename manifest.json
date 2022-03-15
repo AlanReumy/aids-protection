@@ -53,9 +53,15 @@
         "appid" : "wxe86eebc50244123b",
         "setting" : {
             "urlCheck" : false,
-            "postcss" : false
+            "postcss" : false,
+            "minified" : true
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "需要获取位置信息"
+            }
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true
