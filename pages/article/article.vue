@@ -26,6 +26,12 @@
     <u-divider></u-divider>
     <view class="allComment">全部评论 {{ commentList.length }}</view>
     <CommentList :commentList="commentList"></CommentList>
+    <view class="footer">
+      <u--textarea v-model="comment" placeholder="请输入内容"></u--textarea>
+      <view class="btn">
+        <u-button type="primary" text="发评论" @click="addComment"></u-button>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -35,24 +41,49 @@ export default {
   data() {
     return {
       info: '',
-      commentList: []
+      commentList: [],
+      comment: ''
     }
   },
   onLoad(option) {
     this.info = JSON.parse(option.info)
+    console.log(this.info)
     this.$request('/comment/list?answerId=' + this.info.id).then((res) => {
       this.$store.commit('faqModule/changeCommentList', res.data)
       this.commentList = this.$store.state.faqModule.commentList
+      console.log(this.commentList)
     })
   },
-  components: { CommentList }
+  components: { CommentList },
+  methods: {
+    // 增加评论
+    addComment() {
+      uni.getStorage({
+        key: 'userInfo',
+        success: (res) => {
+          const userId = res.data.id
+          this.$request(
+            '/comment/create',
+            {
+              content: this.comment, //内容
+              userId, //用户id
+              answerId: this.info.id //回答id
+            },
+            'POST'
+          ).then((res) => {
+            this.commentList.push(res.data)
+            this.comment = ''
+          })
+        }
+      })
+    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
 .articleInfo {
   background-color: #fff;
-  height: 100vh;
   padding: 30rpx;
   .header {
     margin-top: 30rpx;
@@ -89,6 +120,13 @@ export default {
   .allComment {
     font-size: 30rpx;
     margin: 30rpx 0;
+  }
+
+  .footer {
+    margin-top: 20rpx;
+    .btn {
+      margin-top: 30rpx;
+    }
   }
 }
 </style>
