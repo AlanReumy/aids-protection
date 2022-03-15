@@ -1,10 +1,10 @@
 <template>
   <view class="listItem" @click="goAnswerList">
-    <view class="question">
-      <slot name="question">你读过最惊艳的现代诗是什么？</slot>
+    <view class="title">
+      <slot name="title">你读过最惊艳的现代诗是什么？</slot>
     </view>
     <view class="author">
-      <slot name="author">作者</slot>
+      <!-- <slot name="author">作者</slot> -->
     </view>
     <view class="desc">
       <slot name="desc"
@@ -45,7 +45,7 @@ export default {
   margin-bottom: 20rpx;
   background-color: #fff;
   padding: 0rpx 50rpx;
-  .question {
+  .title {
     padding-top: 20rpx;
     font-size: 35rpx;
     font-weight: bold;

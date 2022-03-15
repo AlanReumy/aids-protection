@@ -2,9 +2,9 @@
   <view class="list">
     <view v-for="item in questionList" :key="item.id">
       <QuestionListItem :info="item">
-        <template #question>{{ item.question }}</template>
-        <template #author>提问者：{{ item.user.username }}</template>
-        <template #desc>问题描述：{{ item.desc }}</template>
+        <template #title>{{ item.title }}</template>
+        <!-- <template #author>提问者：{{ item.user.username }}</template> -->
+        <template #desc>{{ item.desc }}</template>
         <template #agreeCount>{{ item.agreeCount }}</template>
         <template #commentCount>{{ item.commentCount }}</template>
       </QuestionListItem>

@@ -6,17 +6,22 @@
     <view class="desc">
       <slot name="desc">{{ info.content }}</slot>
     </view>
-    <view class="author">
+    <!-- <view class="author">
       <slot name="author">{{ info.user.username }}</slot>
-    </view>
+    </view> -->
     <view class="footer">
-      <slot name="agreeCount" class="count">{{
-        info.agree ? info.agree : 0
-      }}</slot>
-      赞同·
-      <slot name="disAgreeCount" class="count">{{
-        info.disAgree ? info.disAgree : 0
-      }}</slot>
+      <slot name="agreeCount">
+        <span class="count">
+          {{ info.agree ? info.agree : 0 }}
+        </span>
+      </slot>
+      赞同
+      <span class="dot"> · </span>
+      <slot name="disAgreeCount">
+        <span class="count">
+          {{ info.disAgree ? info.disAgree : 0 }}
+        </span>
+      </slot>
       反对
     </view>
   </view>
@@ -41,7 +46,6 @@ export default {
       uni.redirectTo({
         url: `/pages/article/article?info=${JSON.stringify(this.info)}`
       })
-      console.log(999)
     }
   },
   watch: {},
@@ -74,22 +78,31 @@ export default {
   margin-bottom: 20rpx;
   background-color: #fff;
   padding: 0rpx 50rpx;
+  .title {
+    font-weight: bold;
+    padding-top: 20rpx;
+  }
   .author {
     font-size: 30rpx;
   }
   .desc {
     margin: 20rpx 0;
-    font-size: 31rpx;
+    font-size: 30rpx;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-    padding-bottom: 20rpx;
   }
   .footer {
     display: flex;
     font-size: 0.8rem;
     padding-bottom: 20rpx;
+    .dot {
+      margin: 0 0.2rem;
+    }
+    .count {
+      margin-right: 0.2rem;
+    }
   }
 }
 </style>

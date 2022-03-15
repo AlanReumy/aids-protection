@@ -4,7 +4,8 @@
       <view class="avatar">
         <u-icon name="github-circle-fill" size="30px"></u-icon>
       </view>
-      <view class="author">{{ info.user.username }}</view>
+      <!-- <view class="author">{{ info.user.username }}</view> -->
+      <view class="author">{{ '匿名用户' }}</view>
     </view>
     <view class="title">
       {{ info.title }}
@@ -50,15 +51,23 @@ export default {
 
 <style scoped lang="scss">
 .articleInfo {
+  background-color: #fff;
+  height: 100vh;
   padding: 30rpx;
   .header {
     margin-top: 30rpx;
     display: flex;
     .avatar {
-      width: 100rpx;
+      width: 80rpx;
+    }
+    .author {
+      font-size: 35rpx;
+      padding-top: 10rpx;
     }
   }
   .title {
+    font-size: 40rpx;
+    font-weight: bold;
     margin: 30rpx 10rpx;
   }
   .content {
