@@ -1,18 +1,23 @@
 <template>
   <view class="volunteerInfo">
     <view class="title">
-      {{ item.title }}
+      <view>
+        {{ item.title }}
+      </view>
+      <view>开始时间：{{ transformTime(item.startDate) }}</view>
+      <view>结束时间：{{ transformTime(item.endDate) }}</view>
     </view>
     <view class="volunteerDesc" v-if="current == 0">
       {{ item.desc }}
     </view>
     <view class="btn">
-      <u-button type="primary" shape="circle" @click="submit">提交</u-button>
+      <u-button type="primary" @click="submit">提交</u-button>
     </view>
   </view>
 </template>
 
 <script>
+import { transformTime } from '../../util'
 export default {
   components: {},
   onLoad(options) {
@@ -45,7 +50,40 @@ export default {
   },
   computed: {},
   methods: {
+    // 时间转换
+    transformTime(time) {
+      return transformTime(time)
+    },
+    // 提交志愿服务申请
     submit() {
+      uni.getStorage({
+        key: 'userInfo',
+        success: (res) => {
+          const userInfo = res.data
+          if (!userInfo.isVolunteer) {
+            uni.showToast({
+              icon: 'error',
+              title: '您不是志愿者噢',
+              duration: 2000
+            })
+          } else {
+            this.$request(
+              '/volunteer/booking',
+              {
+                userId: userInfo.id,
+                volunteerId: this.item.id
+              },
+              'POST'
+            ).then((res) => {
+              uni.showToast({
+                icon: 'success',
+                title: res.msg,
+                duration: 2000
+              })
+            })
+          }
+        }
+      })
       // todo: 申请的后台逻辑
       uni.navigateBack({})
     },
@@ -60,7 +98,6 @@ export default {
 .volunteerInfo {
   .title {
     padding-left: 40rpx;
-    height: 90rpx;
     line-height: 90rpx;
     background-color: #fff;
     border-bottom: 1px solid #eee;
