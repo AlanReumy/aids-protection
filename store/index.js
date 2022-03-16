@@ -15,6 +15,10 @@ const store = new Vuex.Store({
   mutations: {
     setUserInfo(state, userInfo) { //设置参数
           state.userInfo = userInfo;
+          uni.setStorage({
+            key:'userInfo',
+            data: userInfo
+          })
         }
   },
   modules: {

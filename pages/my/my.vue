@@ -6,13 +6,15 @@
           <image :src="userInfo.head" style="width: 90rpx; height: 90rpx;"></image>
         </view>
         <text style="margin-left: 30rpx;">{{userInfo.name}}</text>
-        <image src="../../static/icon/game.png" style="width: 30rpx; height: 30rpx;margin-left: auto;"></image>
+        <view style="margin-left: auto;">
+          <u-icon name="arrow-right" color="#e53a36" size="28"></u-icon>
+        </view>
       </view>
     </view>
     <view style="padding: 30rpx 20rpx;">
         <view class="rowList">
           <view class="rowListItem" v-for="(item,index) in rowList" :key="index">
-              <image :src="item.icon" style="width:40rpx; height:40rpx;"></image>
+              <image :src="item.icon" style="width:50rpx; height:50rpx; margin-bottom: 20rpx;"></image>
               <text>{{item.title}}</text>
           </view>
         </view>
@@ -22,7 +24,8 @@
             <image :src="item.icon" style="width:40rpx; height:40rpx;"></image>
             <text style="margin-left: 30rpx;">{{item.title}}</text>
           </view>
-          <image src="../../static/icon/game.png" style="width:40rpx; height:40rpx;"></image>
+          <u-icon name="arrow-right" color="#2d2d2d" size="24"></u-icon>
+          <!-- <image src="../../static/icon/game.png" style="width:40rpx; height:40rpx;"></image> -->
         </view>
       </view>
     </view>
@@ -33,52 +36,37 @@
 	export default {
 		data() {
 			return {
+        ifLogin:false,
         userInfo:{
           head:'../../static/img/head1.png',
           name:'点击头像登录'
         },
         rowList:[
           {
-            icon:'../../static/img/head1.png',
-            title:'test'
+            icon:'../../static/img/tiwen.png',
+            title:'我的提问'
           },
           {
-            icon:'../../static/img/head1.png',
-            title:'test'
+            icon:'../../static/img/time.png',
+            title:'浏览记录'
           },
           {
-            icon:'../../static/img/head1.png',
-            title:'test'
-          },
-          {
-            icon:'../../static/img/head1.png',
-            title:'test'
-          },
-          {
-            icon:'../../static/img/head1.png',
-            title:'test'
+            icon:'../../static/img/kefu.png',
+            title:'客服与帮助'
           },
         ],
         colList:[
           {
-            icon:'../../static/img/head1.png',
-            title:'test'
+            icon:'../../static/img/Volunteer.png',
+            title:'成为志愿者'
           },
           {
-            icon:'../../static/img/head1.png',
-            title:'test'
+            icon:'../../static/img/proposal.png',
+            title:'建议反馈'
           },
           {
-            icon:'../../static/img/head1.png',
-            title:'test'
-          },
-          {
-            icon:'../../static/img/head1.png',
-            title:'test'
-          },
-          {
-            icon:'../../static/img/head1.png',
-            title:'test'
+            icon:'../../static/img/setter.png',
+            title:'设置'
           },
         ]
 			}
@@ -90,7 +78,7 @@
     },
 		methods: {
       login(){
-        if(!this.$store.state.userInfo.username){
+        if(!this.ifLogin){
           uni.navigateTo({
             url:'/pages/login/login'
           })
@@ -101,10 +89,15 @@
         }
       },
       getUserInfo(){
-        const username = this.$store.state.userInfo.username
-        if(username){
-          this.userInfo.name = username
-        }
+        let _this = this
+        uni.getStorage({
+        	key: 'userInfo',
+        	success: function (res) {
+        		console.log(res.data);
+            _this.userInfo.name = res.data.username
+            _this.ifLogin = true
+        	}
+        });
       },
 		}
 	}
@@ -113,12 +106,13 @@
 <style>
   .card{
     padding: 200rpx 20rpx 50rpx;
-    background: #54a7ff;
+    background-image: url(../../static/img/headBg.png);
+    background-size:cover
   }
   .userInfo{
     display: flex;
     align-items: center;
-    background-color:rgba(57, 57, 57, 0.6);
+    background-color:rgba(255,255,255,0.8);
     padding: 30rpx 30rpx;
     border-radius: 30rpx;
   }
@@ -128,7 +122,7 @@
     padding: 40rpx 0;
     margin-bottom: 30rpx;
     border-radius: 30rpx;
-    background-color: #a6fd5f;
+    background-color: #e54440;
   }
   .rowListItem{
     display: flex;
@@ -137,7 +131,7 @@
   }
   .colList{
     border-radius: 30rpx;
-    background-color: #41c2fd;
+    background-color: #e35b59;
   }
   .colListItem{
     display: flex;
