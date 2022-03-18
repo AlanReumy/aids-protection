@@ -107,6 +107,15 @@
             }
 
         }
+        ,{
+            "path" : "pages/modifyInfo/modifyInfo",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改信息",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
