@@ -8,7 +8,7 @@
       <view class="author">{{ '匿名用户' }}</view>
     </view>
     <view class="title">
-      {{ info.title }}
+      <!-- {{ info.title }} -->
     </view>
     <view class="content">
       {{ info.content }}

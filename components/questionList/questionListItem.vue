@@ -42,12 +42,13 @@ export default {
 
 <style lang="scss" scoped>
 .listItem {
+  margin-top: 20rpx;
   margin-bottom: 20rpx;
   background-color: #fff;
   padding: 0rpx 50rpx;
   .title {
     padding-top: 20rpx;
-    font-size: 35rpx;
+    font-size: 33rpx;
     font-weight: bold;
   }
   .author {
@@ -57,6 +58,7 @@ export default {
   .desc {
     margin: 20rpx 0;
     font-size: 31rpx;
+    color: #b1b1b1;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;

@@ -1,13 +1,15 @@
 <template>
-  <view class="edit">
-    <u--textarea
-      v-model="title"
-      :placeholder="config.titlePlaceHolder"
-      border="bottom"
-      height="50"
-      showConfirmBar
-    ></u--textarea>
-    <view v-if="config.type === 'question'">
+  <view class="text">
+    <view v-if="config.type === 'question'" class="title">
+      <u--textarea
+        v-model="title"
+        :placeholder="config.titlePlaceHolder"
+        border="bottom"
+        height="50"
+        showConfirmBar
+      ></u--textarea>
+    </view>
+    <view v-if="config.type === 'question'" class="content">
       <u--textarea
         v-model="desc"
         :placeholder="config.descPlaceHolder"
@@ -16,7 +18,7 @@
         showConfirmBar
       ></u--textarea>
     </view>
-    <view v-else>
+    <view v-else class="content">
       <u--textarea
         v-model="content"
         :placeholder="config.descPlaceHolder"
@@ -25,10 +27,11 @@
         showConfirmBar
       ></u--textarea>
     </view>
-    <view class="action">
+    <view class="action content">
       <u-button
         type="primary"
         :text="config.buttonText"
+        color="#a3dbf8"
         @click="finishEdit"
       ></u-button>
     </view>
@@ -97,5 +100,20 @@ export default {
 <style scoped>
 .action {
   margin-top: 20px;
+}
+
+.text {
+  margin: 0 20rpx;
+}
+
+.content,
+.title {
+  margin-top: 20rpx;
+  border: 1px solid #eee;
+  border-radius: 30rpx;
+}
+
+.content {
+  margin-top: 20rpx;
 }
 </style>
