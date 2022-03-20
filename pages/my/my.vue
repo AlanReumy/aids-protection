@@ -12,28 +12,21 @@
       </view>
     </view>
     <view style="padding: 30rpx 20rpx;">
-        <view class="rowList">
-          <view class="rowListItem" v-for="(item,index) in rowList" :key="index">
-              <image :src="item.icon" style="width:50rpx; height:50rpx; margin-bottom: 20rpx;"></image>
-              <text>{{item.title}}</text>
-          </view>
-        </view>
-      <view class="colList">
-        <view class="colListItem" v-for="(item,index) in colList" :key="item.index">
-          <view style="display: flex;">
-            <image :src="item.icon" style="width:40rpx; height:40rpx;"></image>
-            <text style="margin-left: 30rpx;">{{item.title}}</text>
-          </view>
-          <u-icon name="arrow-right" color="#2d2d2d" size="24"></u-icon>
-          <!-- <image src="../../static/icon/game.png" style="width:40rpx; height:40rpx;"></image> -->
-        </view>
+      <view style="border-radius: 30rpx; overflow: hidden;">
+        <row-list :rowList="rowList1"></row-list>
+      </view>
+      <view style="font-weight: 700; margin:30rpx 0">其他服务</view>
+      <view style="border-radius: 30rpx; overflow: hidden;">
+        <row-list :rowList="rowList2"></row-list>
       </view>
     </view>
 	</view>
 </template>
 
 <script>
+  import rowList from '../../components/rowList/rowList.vue'
 	export default {
+    components:{rowList},
 		data() {
 			return {
         ifLogin:false,
@@ -41,32 +34,48 @@
           head:'../../static/img/head1.png',
           name:'点击头像登录'
         },
-        rowList:[
+        rowList1:[
           {
-            icon:'../../static/img/tiwen.png',
-            title:'我的提问'
+            img:'../../static/icon/my/tiwen.png',
+            title:'我的提问',
+            page:''
           },
           {
-            icon:'../../static/img/time.png',
-            title:'浏览记录'
+            img:'../../static/icon/my/jilu.png',
+            title:'浏览记录',
+            page:''
           },
           {
-            icon:'../../static/img/kefu.png',
-            title:'客服与帮助'
+            img:'../../static/icon/my/aixin.png',
+            title:'在线咨询',
+            page:''
           },
         ],
-        colList:[
+        rowList2:[
           {
-            icon:'../../static/img/Volunteer.png',
-            title:'成为志愿者'
+            img:'../../static/icon/my/zhiyuan.png',
+            title:'成为志愿者',
+            page:''
           },
           {
-            icon:'../../static/img/proposal.png',
-            title:'建议反馈'
+            img:'../../static/icon/my/yuyue.png',
+            title:'预约检测',
+            page:''
           },
           {
-            icon:'../../static/img/setter.png',
-            title:'设置'
+            img:'../../static/icon/my/xianxue.png',
+            title:'鲜血服务',
+            page:''
+          },
+          {
+            img:'../../static/icon/my/fankui.png',
+            title:'意见反馈',
+            page:''
+          },
+          {
+            img:'../../static/icon/my/set.png',
+            title:'设置',
+            page:''
           },
         ]
 			}
@@ -115,27 +124,5 @@
     background-color:rgba(255,255,255,0.8);
     padding: 30rpx 30rpx;
     border-radius: 30rpx;
-  }
-  .rowList{
-    display: flex;
-    justify-content: space-around;
-    padding: 40rpx 0;
-    margin-bottom: 30rpx;
-    border-radius: 30rpx;
-    background-color: #e54440;
-  }
-  .rowListItem{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .colList{
-    border-radius: 30rpx;
-    background-color: #e35b59;
-  }
-  .colListItem{
-    display: flex;
-    justify-content: space-between;
-    padding: 20rpx 30rpx;
   }
 </style>

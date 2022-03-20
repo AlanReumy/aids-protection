@@ -1,53 +1,19 @@
 <template>
   <view>
-    <u-search
-      placeholder="请输入搜索内容"
-      :clearabled="true"
-      :show-action="true"
-      actionText="搜索"
-      :animation="true"
-      v-model="keyword"
-    >
-    </u-search>
-    <view style="height: 30rpx"></view>
+    <view style="background-color: #F9CCE1;padding:0 20rpx 20rpx;">
+      <u-search
+        placeholder="请输入搜索内容"
+        :clearabled="true"
+        :show-action="true"
+        actionText="搜索"
+        :animation="true"
+        v-model="keyword"
+      >
+      </u-search>
+    </view>
     <u-swiper :list="list1" height="400rpx"> </u-swiper>
-    <view style="padding: 30rpx">
-      <view class="buttonBlock">
-        <view class="button1" style="background: #f55060">
-          <view class="button1Left">
-            <image
-              src="../../static/icon/game.png"
-              style="width: 80rpx; height: 80rpx"
-            ></image>
-          </view>
-          <view class="button1right">
-            <view style="text-align: center">防艾小游戏</view>
-            <view style="text-align: center; color: #ffffff; font-size: 25rpx"
-              >知艾防艾</view
-            >
-          </view>
-        </view>
-        <view class="button1" style="background: #6395ea">
-          <view class="button1Left">
-            <image
-              src="../../static/icon/volunteer.png"
-              style="width: 80rpx; height: 80rpx"
-            ></image>
-          </view>
-          <view class="button1right" @click="goVolunteer">
-            <view style="text-align: center">加入我们</view>
-            <view style="text-align: center; color: #ffffff; font-size: 25rpx"
-              >一同抗艾</view
-            >
-          </view>
-        </view>
-      </view>
-      <view class="button2" @click="goQuestion">
-        <view style="text-align: center; font-size: 50rpx">问答空间</view>
-        <view style="text-align: center; color: #ffffff; font-size: 40rpx"
-          >可匿名的问答空间</view
-        >
-      </view>
+    <view style="margin: 20rpx 20rpx;border-radius: 30rpx; overflow: hidden;">
+      <row-list :rowList="rowList"></row-list>
     </view>
     <swiper :next-margin="20">
       <swiper-item v-for="(item, index) in article" :key="index">
@@ -77,11 +43,30 @@
 let img1 = require('../../static/img/5.jpg')
 let img2 = require('../../static/img/6.jpg')
 let img3 = require('../../static/img/7.jpg')
+import rowList from '../../components/rowList/rowList.vue'
 export default {
+  components:{rowList},
   data() {
     return {
       keyword: '',
       list1: [img1, img2, img3],
+      rowList:[
+        {
+          img:'../../static/icon/index/game.png',
+          title:'防艾游戏',
+          page:''
+        },
+        {
+          img:'../../static/icon/my/tiwen.png',
+          title:'问答专区',
+          page:''
+        },
+        {
+          img:'../../static/icon/my/aixin.png',
+          title:'志愿服务',
+          page:''
+        },
+      ],
       article: [
         {
           title: '艾滋病常见症状',
@@ -122,39 +107,10 @@ export default {
 }
 </script>
 <style>
-.buttonBlock {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 30rpx;
-}
-.button1 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 47%;
-  height: 150rpx;
-  border-radius: 15rpx;
-}
-.button1Left {
-  margin-left: 20rpx;
-}
-.button1right {
-  flex: 1;
-}
-.button2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  height: 300rpx;
-  background: #008800;
-  border-radius: 30rpx;
-}
 .swiper-item {
   width: 90%;
   padding: 10rpx 30rpx 20rpx;
-  background: #f3f3f3;
+  background: #ffffff;
   border-radius: 30rpx;
 }
 .user {
