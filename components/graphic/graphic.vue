@@ -1,12 +1,15 @@
 <template>
   <view class="graphic" @click="goVolunteerForm">
-    <image src="https://cdn.uviewui.com/uview/album/1.jpg" class="image">
-    </image>
+    <view class="img">
+      <image src="../../static/img/volunteer/volunteer.jpg" class="image">
+      </image>
+    </view>
     <view class="content">
       <view class="title">{{ item.title }}</view>
       <view class="desc">
         {{ item.desc }}
       </view>
+      <view class="more">点击了解更多</view>
     </view>
   </view>
 </template>
@@ -28,28 +31,24 @@ export default {
 
 <style scoped lang="scss">
 .graphic {
-  position: relative;
   margin-bottom: 30rpx;
   height: 210rpx;
-  .image {
-    position: absolute;
-    left: 0px;
-    border-radius: 10px;
-    width: 190rpx;
-    height: 210rpx;
-    box-shadow: 2px 2px 2px 2px rgba(238, 238, 238, 0.938);
+  display: flex;
+  background-color: #fff;
+  border-radius: 20rpx;
+  box-shadow: 2px 2px 2px 2px rgba(233, 228, 228, 0.849);
+  .img {
+    padding: 5rpx;
+    padding-left: 20rpx;
+  }
+  .img image {
+    width: 200rpx;
+    height: 200rpx;
   }
   .content {
-    background-color: #fff;
-    position: absolute;
-    z-index: 0;
-    left: 180rpx;
-    width: calc(100% - 190rpx);
-    border-radius: 20rpx;
-    height: 90px;
-    box-shadow: 2px 2px 2px 2px rgba(233, 228, 228, 0.849);
     .title {
       font-weight: bold;
+      font-size: 33rpx;
       padding-top: 15rpx;
     }
     .title,
@@ -61,12 +60,19 @@ export default {
     }
 
     .desc {
-      font-size: 32rpx;
+      font-size: 30rpx;
       overflow: hidden;
       display: -webkit-box;
       padding-right: 20rpx;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
+    }
+
+    .more {
+      color: rgba(170, 170, 170, 0.918);
+      font-size: 28rpx;
+      margin-left: 300rpx;
+      padding-top: 40rpx;
     }
   }
 }

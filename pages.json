@@ -70,62 +70,53 @@
         "navigationBarTitleText": "预约详情",
         "enablePullDownRefresh": false
       }
+    },
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "登录",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/register/register",
+      "style": {
+        "navigationBarTitleText": "注册",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/PersonalData/PersonalData",
+      "style": {
+        "navigationBarTitleText": "个人信息",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/map/map",
+      "style": {
+        "navigationBarTitleText": "地图",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/modifyInfo/modifyInfo",
+      "style": {
+        "navigationBarTitleText": "修改信息",
+        "enablePullDownRefresh": false
+      }
     }
-      ,{
-            "path" : "pages/login/login",
-            "style" :
-            {
-                "navigationBarTitleText": "登录",
-                "enablePullDownRefresh": false
-            }
-
-        },
-        {
-              "path" : "pages/register/register",
-              "style" :
-              {
-                  "navigationBarTitleText": "注册",
-                  "enablePullDownRefresh": false
-              }
-
-          }
-        ,{
-            "path" : "pages/PersonalData/PersonalData",
-            "style" :
-            {
-                "navigationBarTitleText": "个人信息",
-                "enablePullDownRefresh": false
-            }
-
-        }
-        ,{
-            "path" : "pages/map/map",
-            "style" :
-            {
-                "navigationBarTitleText": "地图",
-                "enablePullDownRefresh": false
-            }
-
-        }
-        ,{
-            "path" : "pages/modifyInfo/modifyInfo",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "修改信息",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+  ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#ff4c4c",
+    "navigationBarBackgroundColor": "#f9cce1",
     "backgroundColor": "#ffffff"
   },
   "tabBar": {
     "color": "#000000",
-    "selectedColor": "#ff4c4c",
+    "selectedColor": "#8fdefd",
+    "backgroundColor": "#f9cce1",
     "list": [
       {
         "pagePath": "pages/index/index",

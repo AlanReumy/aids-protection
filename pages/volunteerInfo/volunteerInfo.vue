@@ -4,14 +4,18 @@
       <view>
         {{ item.title }}
       </view>
-      <view>开始时间：{{ transformTime(item.startDate) }}</view>
-      <view>结束时间：{{ transformTime(item.endDate) }}</view>
+      <view class="time"
+        >活动时间：{{ transformTime(item.startDate) }}-{{
+          transformTime(item.endDate)
+        }}</view
+      >
+      <view></view>
     </view>
     <view class="volunteerDesc" v-if="current == 0">
       {{ item.desc }}
     </view>
-    <view class="btn">
-      <u-button type="primary" @click="submit">提交</u-button>
+    <view>
+      <button class="btn" type="default" @click="submit">提交</button>
     </view>
   </view>
 </template>
@@ -96,19 +100,31 @@ export default {
 
 <style scoped lang="scss">
 .volunteerInfo {
+  margin: 20rpx;
   .title {
     padding-left: 40rpx;
     line-height: 90rpx;
+    font-size: 33rpx;
     background-color: #fff;
     border-bottom: 1px solid #eee;
+    margin-bottom: 20rpx;
+    border-radius: 20rpx;
+    box-shadow: 2px 2px 2px 2px rgba(233, 228, 228, 0.849);
+  }
+  .time {
+    font-size: 28rpx;
+    color: rgba(170, 170, 170, 0.918);
   }
   .volunteerDesc {
     font-size: 34rpx;
-    padding: 25rpx;
+    padding: 40rpx;
+    padding-top: 30rpx;
     border: 1px solid #eee;
-    margin: 20rpx;
     border-radius: 15rpx;
     background-color: #fff;
+    margin-bottom: 20rpx;
+    border-radius: 20rpx;
+    box-shadow: 2px 2px 2px 2px rgba(233, 228, 228, 0.849);
   }
   .volunteerForm {
     .base {
@@ -144,9 +160,15 @@ export default {
         border-bottom: 1px solid #eee;
       }
     }
-    .btn {
-      padding: 30rpx;
-    }
   }
+}
+
+.btn {
+  background-color: #79d8fd;
+  color: #fff;
+  padding: 20rp;
+  font-size: 30rpx;
+  border-radius: 20rpx;
+  box-shadow: 2px 2px 2px 2px rgba(238, 238, 238, 0.938);
 }
 </style>

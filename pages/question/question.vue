@@ -10,7 +10,7 @@
       </QuestionListItem>
     </view>
     <view class="icon" @click="askQuestion"
-      ><u-icon name="plus-circle" size="20px"></u-icon
+      ><u-icon name="plus-circle-fill" color="#f9cce1" size="20px"></u-icon
     ></view>
   </view>
 </template>

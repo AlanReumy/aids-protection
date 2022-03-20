@@ -1,7 +1,7 @@
 <template>
   <view class="articleList">
-    <view v-for="article in articleList" :key="article.id">
-      <ArticleListItem :article="article" :showHeight="200"></ArticleListItem>
+    <view v-for="article in articleList" :key="article.id" class="item">
+      <ArticleListItem :article="article"></ArticleListItem>
     </view>
   </view>
 </template>
@@ -17,4 +17,8 @@ export default {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.item {
+  margin-top: 20rpx;
+}
+</style>

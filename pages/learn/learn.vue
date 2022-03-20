@@ -4,6 +4,9 @@
       :list="list"
       :current="current"
       @change="sectionChange"
+      bgColor="#f9cce1"
+      activeColor="#f9cce1"
+      inactiveColor="#fff"
     ></u-subsection>
     <view class="experience" v-if="current === 0">
       <ArticleList :articleList="knowledgeList"></ArticleList>
@@ -16,19 +19,25 @@
 
 <script>
 import ArticleList from '../../components/articleList/articleList.vue'
+import knowledgeList from '../../mock/knowledgeList'
+import experienceList from '../../mock/experienceList'
 export default {
   data() {
     return {
       list: [
         {
-          name: '知识科普'
+          name: '相关科普'
         },
         {
-          name: '经验分享'
+          name: '预防治疗'
         }
       ],
-      current: 1
+      current: 0
     }
+  },
+  mounted() {
+    this.$store.commit('learnModule/changeKnowledgeList', knowledgeList.data)
+    this.$store.commit('learnModule/changeExperienceList', experienceList.data)
   },
   computed: {
     knowledgeList() {
@@ -50,6 +59,6 @@ export default {
 <style lang="scss" scoped>
 .knowledge,
 .experience {
-  background-color: #fff;
+  background-color: #eee;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <view class="listItem" @click="goAnswerList">
     <view class="title">
-      <slot name="title">{{ info.title }}</slot>
+      <!-- <slot name="title">{{ info.title }}</slot> -->
     </view>
     <view class="desc">
       <slot name="desc">{{ info.content }}</slot>
@@ -10,19 +10,22 @@
       <slot name="author">{{ info.user.username }}</slot>
     </view> -->
     <view class="footer">
-      <slot name="agreeCount">
-        <span class="count">
-          {{ info.agree ? info.agree : 0 }}
-        </span>
-      </slot>
-      赞同
-      <span class="dot"> · </span>
-      <slot name="disAgreeCount">
-        <span class="count">
-          {{ info.disAgree ? info.disAgree : 0 }}
-        </span>
-      </slot>
-      反对
+      <view class="time">1分钟前</view>
+      <view class="contentData">
+        <slot name="agreeCount">
+          <span class="count">
+            {{ info.agree ? info.agree : 0 }}
+          </span>
+        </slot>
+        赞同
+        <span class="dot"> · </span>
+        <slot name="disAgreeCount">
+          <span class="count">
+            {{ info.disAgree ? info.disAgree : 0 }}
+          </span>
+        </slot>
+        反对
+      </view>
     </view>
   </view>
 </template>
@@ -75,6 +78,7 @@ export default {
 
 <style lang="scss" scoped>
 .listItem {
+  margin-top: 20rpx;
   margin-bottom: 20rpx;
   background-color: #fff;
   padding: 0rpx 50rpx;
@@ -86,8 +90,8 @@ export default {
     font-size: 30rpx;
   }
   .desc {
-    margin: 20rpx 0;
-    font-size: 30rpx;
+    margin: 10rpx 0;
+    font-size: 33rpx;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -95,8 +99,10 @@ export default {
   }
   .footer {
     display: flex;
+    justify-content: space-between;
     font-size: 0.8rem;
     padding-bottom: 20rpx;
+    color: rgba(170, 170, 170, 0.918);
     .dot {
       margin: 0 0.2rem;
     }
