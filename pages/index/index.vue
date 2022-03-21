@@ -1,6 +1,6 @@
 <template>
   <view>
-    <view style="background-color: #F9CCE1;padding:0 20rpx 20rpx;">
+    <view style="background-color: #f9cce1; padding: 0 20rpx 20rpx">
       <u-search
         placeholder="请输入搜索内容"
         :clearabled="true"
@@ -12,7 +12,7 @@
       </u-search>
     </view>
     <u-swiper :list="list1" height="400rpx"> </u-swiper>
-    <view style="margin: 20rpx 20rpx;border-radius: 30rpx; overflow: hidden;">
+    <view style="margin: 20rpx 20rpx; border-radius: 30rpx; overflow: hidden">
       <row-list :rowList="rowList"></row-list>
     </view>
     <swiper :next-margin="20">
@@ -45,27 +45,27 @@ let img2 = require('../../static/img/6.jpg')
 let img3 = require('../../static/img/7.jpg')
 import rowList from '../../components/rowList/rowList.vue'
 export default {
-  components:{rowList},
+  components: { rowList },
   data() {
     return {
       keyword: '',
       list1: [img1, img2, img3],
-      rowList:[
+      rowList: [
         {
-          img:'../../static/icon/index/game.png',
-          title:'防艾游戏',
-          page:''
+          img: '../../static/icon/index/game.png',
+          title: '防艾游戏',
+          page: ''
         },
         {
-          img:'../../static/icon/my/tiwen.png',
-          title:'问答专区',
-          page:''
+          img: '../../static/icon/my/tiwen.png',
+          title: '问答专区',
+          page: '/pages/question/question'
         },
         {
-          img:'../../static/icon/my/aixin.png',
-          title:'志愿服务',
-          page:''
-        },
+          img: '../../static/icon/my/aixin.png',
+          title: '志愿服务',
+          page: '/pages/volunteer/volunteer'
+        }
       ],
       article: [
         {
